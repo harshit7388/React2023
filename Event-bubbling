@@ -1,0 +1,51 @@
+import React from 'react'
+import { useState } from 'react'
+
+// function Counter() {
+
+//     const [counter, setCounter] = useState(0);
+
+//   return (
+//    <>
+//     <div onClick={()=>setCounter((prevCounter)=>prevCounter+1)} >  
+//         <button  onClick={()=>setCounter((prevCounter)=>prevCounter+1)}> 
+//          counter value is : {counter}
+//          </button>
+//     </div>
+//    </>
+//   )
+// }
+
+// export default Counter
+
+
+
+// the above code is showing event bubbling, in which when onclick executes
+// the counter gets updated by 2.
+
+// to prevent this ..
+
+// event.stopPropagation() is used.
+
+
+function Counter() {
+
+    const [counter, setCounter] = useState(0);
+
+  return (
+   <>
+    <div onClick={()=>setCounter((prevCounter)=>prevCounter+1)} >  
+        <button    
+        onClick={ (event)=>{event.stopPropagation();
+            setCounter((prevCounter)=>prevCounter+1)}}
+            > 
+         counter value is : {counter}
+         </button>
+    </div>
+   </>
+  )
+}
+
+export default Counter
+
+// the counter gets updated by 1 here
